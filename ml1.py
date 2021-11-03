@@ -33,4 +33,19 @@ import matplotlib.pyplot as plt
 
 figure, axes = plt.subplots(nrows=4, ncols=6, figsize=(6,4))
 
-plt.show()
+#plt.show()
+
+#iterating through the subplots (ravel), images, and targets at the same time
+#ravel makes 2D into 1D (makes 1 row of 24 rather than 4x6)
+for item in zip(axes.ravel(), digits.images, digits.target):
+    axes, image, target = item
+    axes.imshow(image, cmap=plt.cm.gray_r)
+    #sets tick marks to empty - no lines
+    axes.set_xticks([])
+    axes.set_yticks([])
+    axes.set_title(target)
+
+plt.tight_layout()
+#plt.show()
+
+
