@@ -13,11 +13,11 @@ from sklearn.datasets import load_diabetes
 diabetes = load_diabetes()
 
 #how many sameples and How many features?
-print(diabetes.data.shape)
+#print(diabetes.data.shape)
 #442 samples, 10 features!
 
 # What does feature s6 represent?
-print(diabetes.DESCR)
+#print(diabetes.DESCR)
 #DESCR tells you everything
 #S6 = blood sugar levels 
 
@@ -29,6 +29,13 @@ X_train, X_test, y_train, y_test = train_test_split(
     diabetes.data, diabetes.target, random_state=11
 )
 
+print(X_train)
+print(y_train)
+print(X_test)
+print(y_test)
+
+
+'''
 #1. Set up model
 mymodel = LinearRegression()
 
@@ -64,3 +71,4 @@ y = x
 
 plt.plot(x,y)
 plt.show()
+'''
