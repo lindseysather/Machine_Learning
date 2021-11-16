@@ -40,6 +40,20 @@ knn.fit(X, y)
 #Predict values
 predicted = knn.predict(X=data_test)
 
+#Convert targets to int type
+target_test=target_test.astype('int')
+#Convert targets to array (gets rid of indexes)
+target_test = target_test.to_numpy()
+#Assign target_test to expected (for easy understandability)
+expected = target_test
+
+
+print("\nCorrect Prediction Score:", format(knn.score(data_test, target_test), ".2%"), "\n")
+
+wrong = [(p,e) for (p,e) in zip(predicted, expected) if p != e]
+print("Wrong Predicted and Expected Pairs:\n", wrong)
+
+
 
 #Make array of titles (gets rid of index values)
 titles = data_test_file.T.loc['title']
@@ -59,15 +73,5 @@ with open('Video Game Predicted Ratings.csv', 'w', newline='') as file:
                 writer.writerow([x, y])
 
 
-#IGNORE: Unnecessary attempt to figure out how find wrong values
-'''
-target_test=target_test.astype('int')
-target_test = target_test.to_numpy()
-expected = target_test
-print(expected[:5])
 
-print(format(knn.score(data_test, target_test), ".2%"))
 
-wrong = [(p,e) for (p,e) in zip(predicted, expected) if p != e]
-print(wrong)
-'''
